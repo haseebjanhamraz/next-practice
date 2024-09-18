@@ -6,6 +6,7 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
+  BooksTable,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -118,6 +119,38 @@ export async function fetchFilteredInvoices(
     throw new Error('Failed to fetch invoices.');
   }
 }
+export async function fetchBooks(query: string, currentPage: number) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  try {
+    const books = await sql<BooksTable>`
+      SELECT
+        id,
+        bookId,
+        shelf,
+        title,
+        author,
+        publication_year,
+        genre,
+        price,
+        language,
+        image_url,
+        in_stock,
+        total_copies
+      FROM books
+      WHERE title ILIKE ${`%${query}%`} OR author ILIKE ${`%${query}%`}
+      ORDER BY publication_year DESC
+      LIMIT ${ITEMS_PER_PAGE}
+      OFFSET ${offset};
+    `;
+
+    return books.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch books.');
+  }
+}
+
 
 export async function fetchInvoicesPages(query: string) {
   try {

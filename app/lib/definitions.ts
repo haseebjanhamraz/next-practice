@@ -86,3 +86,18 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export type BooksTable = {
+  id: string;
+  bookId: string;
+  shelf: string;
+  title: string;
+  author: string;
+  publication_year: number;
+  genre: string;
+  price: number;
+  language: string;
+  image_url: string;
+  in_stock: boolean;
+  total_copies: number;
+}

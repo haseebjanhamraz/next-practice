@@ -3,11 +3,13 @@
 const users = [
   {
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
-    name: 'User',
-    email: 'user@nextmail.com',
+    name: 'Haseeb Alam',
+    email: 'haseeb@gmail.com',
     password: '123456',
   },
 ];
+
+
 
 const customers = [
   {
@@ -144,4 +146,138 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
-export { users, customers, invoices, revenue };
+
+const books = [
+  {
+    bookId: "1",
+    shelf: "A1",
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    publication_year: 1925,
+    genre: "Classic",
+    price: 10.99,
+    language: "English",
+    image_url: "https://example.com/great-gatsby.jpg",
+    in_stock: true,
+    total_copies: 5
+  },
+  {
+    bookId: "2",
+    shelf: "B2",
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    publication_year: 1960,
+    genre: "Fiction",
+    price: 12.49,
+    language: "English",
+    image_url: "https://example.com/to-kill-a-mockingbird.jpg",
+    in_stock: true,
+    total_copies: 8
+  },
+  {
+    bookId: "3",
+    shelf: "C3",
+    title: "1984",
+    author: "George Orwell",
+    publication_year: 1949,
+    genre: "Dystopian",
+    price: 15.00,
+    language: "English",
+    image_url: "https://example.com/1984.jpg",
+    in_stock: true,
+    total_copies: 10
+  },
+  {
+    bookId: "4",
+    shelf: "D1",
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    publication_year: 1813,
+    genre: "Romance",
+    price: 8.99,
+    language: "English",
+    image_url: "https://example.com/pride-and-prejudice.jpg",
+    in_stock: false,
+    total_copies: 2
+  },
+  {
+    bookId: "5",
+    shelf: "E5",
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    publication_year: 1951,
+    genre: "Fiction",
+    price: 11.99,
+    language: "English",
+    image_url: "https://example.com/catcher-in-the-rye.jpg",
+    in_stock: true,
+    total_copies: 7
+  },
+  {
+    bookId: "6",
+    shelf: "F4",
+    title: "Moby Dick",
+    author: "Herman Melville",
+    publication_year: 1851,
+    genre: "Adventure",
+    price: 14.99,
+    language: "English",
+    image_url: "https://example.com/moby-dick.jpg",
+    in_stock: false,
+    total_copies: 3
+  },
+  {
+    bookId: "7",
+    shelf: "G3",
+    title: "War and Peace",
+    author: "Leo Tolstoy",
+    publication_year: 1869,
+    genre: "Historical Fiction",
+    price: 19.99,
+    language: "English",
+    image_url: "https://example.com/war-and-peace.jpg",
+    in_stock: true,
+    total_copies: 4
+  },
+  {
+    bookId: "8",
+    shelf: "H2",
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    publication_year: 1988,
+    genre: "Philosophical",
+    price: 9.99,
+    language: "Portuguese",
+    image_url: "https://example.com/the-alchemist.jpg",
+    in_stock: true,
+    total_copies: 12
+  },
+  {
+    bookId: "9",
+    shelf: "I1",
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    publication_year: 1937,
+    genre: "Fantasy",
+    price: 13.50,
+    language: "English",
+    image_url: "https://example.com/the-hobbit.jpg",
+    in_stock: true,
+    total_copies: 6
+  },
+  {
+    bookId: "10",
+    shelf: "J3",
+    title: "The Picture of Dorian Gray",
+    author: "Oscar Wilde",
+    publication_year: 1890,
+    genre: "Gothic Fiction",
+    price: 7.99,
+    language: "English",
+    image_url: "https://example.com/dorian-gray.jpg",
+    in_stock: false,
+    total_copies: 1
+  }
+];
+
+export { users, customers, invoices, revenue, books };
