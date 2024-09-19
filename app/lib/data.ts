@@ -7,6 +7,7 @@ import {
   LatestInvoiceRaw,
   Revenue,
   BooksTable,
+  LatestBooks,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -46,6 +47,24 @@ export async function fetchLatestInvoices() {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the latest invoices.');
+  }
+}
+export async function fetchLatestBooks() {
+  try {
+    const data = await sql<LatestBooks>`
+      SELECT books.title, books.author, books.price
+      FROM books
+      ORDER BY books.publication_date DESC
+      LIMIT 5`;
+
+    const latestBooks = data.rows.map((book) => ({
+      ...book,
+      price: formatCurrency(book.price),
+    }));
+    return latestBooks;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch the latest books.');
   }
 }
 
@@ -151,6 +170,39 @@ export async function fetchBooks(query: string, currentPage: number) {
   }
 }
 
+
+export async function fetchBooksPages(query: string) {
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM books
+    WHERE
+      books.title::text ILIKE ${`%${query}%`} OR
+      books.author::text ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of books.');
+  }
+}
+export async function fetchCustomersPages(query: string) {
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM customers
+    WHERE
+      customers.name::text ILIKE ${`%${query}%`} OR
+      customers.email::text ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of books.');
+  }
+}
 
 export async function fetchInvoicesPages(query: string) {
   try {
