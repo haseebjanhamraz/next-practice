@@ -8,42 +8,24 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        {/* <AcmeLogo /> */}
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <div
-            className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"
-          />
-          <p
-            className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
-          >
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
-          </p>
-          <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
-          >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
-          </Link>
-        </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* Add Hero Images Here */}
-          <Image
-            src="/hero-desktop.png"
-            width={1000}
-            height={760}
-            className="hidden md:block"
-            alt="Screenshots of the dashboard project showing desktop version"
-          />
-        </div>
-      </div>
-    </main>
+
+    <div className='flex flex-col items-center text-center'>
+      <Image src={"/logo.png"} width={100} height={100} alt='BKRC Logo' className='m-10 rounded-full' />
+      <h2 className='text-2xl font-bold'>Bacha Khan Trust Research Center</h2>
+      <hr className='border border-gray-600 m-10'></hr>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eaque corporis tenetur dignissimos earum dolorem beatae fugit cupiditate, numquam mollitia rerum eveniet repudiandae quidem laudantium debitis, laboriosam est voluptate! Delectus!
+        Quis ullam sunt, minima dolorem ut sapiente expedita quisquam soluta harum quidem obcaecati impedit veritatis maiores officiis nisi quia delectus aliquid eaque quibusdam. Error placeat sit quod natus, voluptates officiis.
+        Harum, quia. Maiores odit nam magni iure sequi doloremque obcaecati voluptas veritatis repudiandae nulla minima molestias ea tenetur dolor aut debitis impedit labore, inventore unde aspernatur alias perspiciatis quae eveniet.
+        Ipsa dignissimos blanditiis similique laboriosam, magnam voluptatem. Vero ea similique, a beatae harum aut quidem, officia nihil dolor provident sequi eum. Earum architecto eum, reiciendis ex dignissimos in veniam voluptatum!
+        Debitis illum, animi placeat omnis, cumque at nisi harum aperiam quod corporis vel voluptatum magnam ad saepe laboriosam nulla perferendis enim repellat temporibus laborum sed. Maxime, omnis. Natus, vel nisi?
+        Corrupti delectus ut quo suscipit harum! Non quo eos doloremque incidunt culpa ullam beatae iusto laborum modi, nostrum earum sint natus et perspiciatis! Deleniti tempora quam quis dolor, veritatis quasi.
+        Quae ducimus deserunt esse aliquid ratione facere id expedita odit quidem dolorum quam vel distinctio dicta illo temporibus consectetur amet dolor voluptatum, est mollitia sint, veniam nisi quos. Similique, obcaecati.
+        Eum blanditiis voluptate a quibusdam maiores voluptatibus saepe officia eius ducimus tempore neque esse, voluptates ipsa, veritatis vero beatae libero numquam nihil? Excepturi vitae magni rem deserunt odio maiores suscipit!
+        Et laudantium illum modi, sed voluptatibus autem asperiores deserunt eligendi nobis harum fugiat similique repellendus. Numquam consectetur ex molestias neque incidunt tempore deserunt! Labore voluptatibus ex et voluptates nulla quo?
+        Quibusdam accusantium, quod fugiat tempora aut, natus ipsam cumque culpa sapiente corporis sint odit deleniti temporibus amet dolorem nostrum recusandae nulla alias, cum reiciendis minus dolore corrupti. Voluptatibus, velit? Cupiditate.
+      </p>
+    </div>
+
   );
 }

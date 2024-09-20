@@ -3,7 +3,7 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
-import Navbar from './ui/components/navbar';
+import Navbar from './ui/components/Navbar';
 
 export default function RootLayout({
   children,
@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <Navbar />
-        <main>{children}</main>
+        <main className='p-10'>{children}</main>
       </body>
     </html>
   );
