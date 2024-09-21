@@ -12,7 +12,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  console.log(`Path: ${pathname}`)
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
