@@ -1,6 +1,5 @@
 import BKRCLogo from '@/app/ui/bkrc-logo';
 import LoginForm from '@/app/ui/login-form';
-import { Button } from '../ui/button';
 import Link from 'next/link'
 
 export default function LoginPage() {

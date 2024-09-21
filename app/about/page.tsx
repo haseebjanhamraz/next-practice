@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+
 
 export default function AboutPage() {
     return (
@@ -49,13 +49,4 @@ export default function AboutPage() {
         </div>
     );
 
-    const metadata: Metadata = {
-        title: {
-            template: '%s | Acme Dashboard',
-            default: 'Bacha Khan Research Center',
-        },
-        description: 'The official library database for Bacha Khan Research Center',
-        keywords: ['non-profit', 'bacha khan', 'bkrc', 'bacha khan research center'],
-        metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
-    };
 }

@@ -43,7 +43,6 @@ export async function authenticate(
 
 
 const CreateBook = FormSchema.omit({ id: true, date: true });
-const UpdateBook = FormSchema.omit({ id: true, date: true });
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
