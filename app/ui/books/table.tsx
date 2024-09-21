@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { formatCurrency } from '@/app/lib/utils';
 import { fetchBooks } from '@/app/lib/data';
 
@@ -99,13 +98,6 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
 function BookCoverWithTitle({ book }: { book: Book }) {
     return (
         <div className="mb-2 flex items-center">
-            <Image
-                src={book.image_url}
-                className="mr-2 rounded-full"
-                width={28}
-                height={28}
-                alt={`${book.title}'s profile picture`}
-            />
             <p>{book.title}</p>
         </div>
     );
