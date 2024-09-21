@@ -11,16 +11,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const isDashboardRoute = pathname.startsWith('/dashboard');
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        {pathname !== '/dashboard' &&
-          <Navbar />
-        }
+        {!isDashboardRoute && <Navbar />}
         <main className={pathname === "/" ? "p-10" : "p-0"}>{children}</main>
-        {pathname !== '/dashboard' &&
-          <Footer />
-        }
+        {!isDashboardRoute && <Footer />}
       </body>
     </html>
   );
