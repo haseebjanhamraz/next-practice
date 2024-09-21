@@ -33,7 +33,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-gray-100 p-4">
+        <nav className="bg-gray-100 p-4 sticky top-0">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo and Title */}
                 <div className="flex items-center space-x-4">
