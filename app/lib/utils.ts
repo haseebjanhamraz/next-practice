@@ -1,4 +1,5 @@
 import { Revenue } from './definitions';
+import clsx from 'clsx';
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -67,3 +68,11 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export function getTextStyles(language: string) {
+  return clsx({
+    'text-right': language === "Urdu",
+    'font-[amiri]': language === "Urdu",
+    'font-bold': language === "Urdu",
+  });
+}

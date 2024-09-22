@@ -3,12 +3,13 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
 
 // Define the schema for form validation using Zod
 const FormSchema = z.object({
     id: z.string(),
-    bookId: z.string({
+    bookid: z.string({
         invalid_type_error: "Please enter a library book id",
     }),
     shelf: z.string({
@@ -39,13 +40,34 @@ const FormSchema = z.object({
     date: z.string(),
 });
 
+
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+) {
+    try {
+        await signIn('credentials', formData);
+    } catch (error) {
+        if (error instanceof AuthError) {
+            switch (error.type) {
+                case 'CredentialsSignin':
+                    return 'Invalid credentials.';
+                default:
+                    return 'Something went wrong.';
+            }
+        }
+        throw error;
+    }
+}
+
+
 const CreateBook = FormSchema.omit({ id: true, date: true });
 const UpdateBook = FormSchema.omit({ id: true, date: true });
 
 // Define the structure for the state
 export type State = {
     errors?: {
-        bookId?: string[];
+        bookid?: string[];
         shelf?: string[];
         title?: string[];
         author?: string[];
@@ -63,7 +85,7 @@ export type State = {
 export async function createBook(prevState: State, formData: FormData) {
     // Validate form using Zod
     const validatedFields = CreateBook.safeParse({
-        bookId: formData.get('bookId'),
+        bookid: formData.get('bookid'),
         shelf: formData.get('shelf'),
         title: formData.get('title'),
         author: formData.get('author'),
@@ -85,7 +107,7 @@ export async function createBook(prevState: State, formData: FormData) {
     }
 
     // Prepare data for insertion into the database
-    const { bookId,
+    const { bookid,
         shelf,
         title,
         author,
@@ -103,7 +125,7 @@ export async function createBook(prevState: State, formData: FormData) {
     try {
         await sql`
         INSERT INTO books (
-        bookId,
+        bookid,
         shelf,
         title,
         author,
@@ -115,7 +137,7 @@ export async function createBook(prevState: State, formData: FormData) {
         in_stock,
         total_copies)
         VALUES (
-        ${bookId},
+        ${bookid},
         ${shelf},
         ${title},
         ${author},
@@ -143,7 +165,7 @@ export async function createBook(prevState: State, formData: FormData) {
 export async function updateBook(id: string, prevState: State, formData: FormData) {
     // Validate form using Zod
     const validatedFields = UpdateBook.safeParse({
-        bookId: formData.get('bookId'),
+        bookid: formData.get('bookid'),
         shelf: formData.get('shelf'),
         title: formData.get('title'),
         author: formData.get('author'),
@@ -165,7 +187,7 @@ export async function updateBook(id: string, prevState: State, formData: FormDat
     }
 
     const {
-        bookId,
+        bookid,
         shelf,
         title,
         author,
@@ -183,7 +205,7 @@ export async function updateBook(id: string, prevState: State, formData: FormDat
         await sql`
         UPDATE books
         SET 
-        bookId = ${bookId},
+        bookid = ${bookid},
         shelf = ${shelf},
         title = ${title},
         author = ${author},
@@ -202,4 +224,16 @@ export async function updateBook(id: string, prevState: State, formData: FormDat
 
     revalidatePath('/dashboard/books');
     redirect('/dashboard/books');
+}
+
+export async function deleteBook(id: string) {
+    try {
+        await sql`DELETE FROM books WHERE id = ${id}`;
+    } catch (error) {
+        return {
+            message: "Database Error: Failed to delete Invoice",
+        };
+    }
+
+    revalidatePath('/dashboard/books');
 }

@@ -7,6 +7,7 @@ import {
   LatestInvoiceRaw,
   Revenue,
   BooksTable,
+  BookForm,
   LatestBooks,
 } from './definitions';
 import { formatCurrency } from './utils';
@@ -145,7 +146,7 @@ export async function fetchBooks(query: string, currentPage: number) {
     const books = await sql<BooksTable>`
       SELECT
         id,
-        bookId,
+        bookid,
         shelf,
         title,
         author,
@@ -167,6 +168,39 @@ export async function fetchBooks(query: string, currentPage: number) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch books.');
+  }
+}
+
+export async function fetchBookById(id: string) {
+  try {
+    const data = await sql<BookForm>`
+      SELECT
+        books.id,
+        books.bookid,
+        books.shelf,
+        books.title,
+        books.author,
+        books.publication_year,
+        books.genre,
+        books.price,
+        books.language,
+        books.image_url,
+        books.in_stock,
+        books.total_copies
+      FROM books
+      WHERE books.id = ${id};
+    `;
+
+    const book = data.rows.map((book) => ({
+      ...book,
+      // Convert amount from cents to dollars
+      amount: book.price / 100,
+    }));
+
+    return book[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch book.');
   }
 }
 

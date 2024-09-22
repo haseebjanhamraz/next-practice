@@ -93,7 +93,7 @@ async function seedBooks() {
   await client.sql`
     CREATE TABLE IF NOT EXISTS books (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      bookId VARCHAR(255) NOT NULL,
+      bookid VARCHAR(255) NOT NULL,
       shelf VARCHAR(255) NOT NULL,
       title VARCHAR(255) NOT NULL,
       author VARCHAR(255) NOT NULL,

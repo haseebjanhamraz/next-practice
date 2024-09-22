@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { formatCurrency } from '@/app/lib/utils';
 import { fetchBooks } from '@/app/lib/data';
+import { getTextStyles } from '@/app/lib/utils';
 
 type Book = {
     id: string;
@@ -74,11 +75,15 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
                         className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                     >
                         <TableCell>
-                            <div className="flex items-center gap-3">
-                                <p>{book.title}</p>
-                            </div>
+
+                            <p className={getTextStyles(book.language)}>{book.title}</p>
                         </TableCell>
-                        <TableCell>{book.author}</TableCell>
+                        <TableCell>
+                            <p className={getTextStyles(book.language)}>
+
+                                {book.author}
+                            </p>
+                        </TableCell>
                         <TableCell>{book.publication_year}</TableCell>
                         <TableCell>{book.genre}</TableCell>
                         <TableCell>{book.language}</TableCell>

@@ -96,7 +96,7 @@ export type LatestBooks = {
 
 export type BooksTable = {
   id: string;
-  bookId: string;
+  bookid: string;
   shelf: string;
   title: string;
   author: string;
@@ -109,3 +109,17 @@ export type BooksTable = {
   total_copies: number;
 }
 
+export type BookForm = {
+  id: string;
+  bookid: string;
+  shelf: string;
+  title: string;
+  author: string;
+  publication_year: number;
+  genre: string;
+  price: number;
+  language: string;
+  image_url: string;
+  in_stock: boolean;
+  total_copies: number;
+};
