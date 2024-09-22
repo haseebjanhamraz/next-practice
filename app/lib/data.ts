@@ -211,6 +211,7 @@ export async function fetchBooksPages(query: string) {
     FROM books
     WHERE
       books.title::text ILIKE ${`%${query}%`} OR
+      books.bookid::text ILIKE ${`%${query}%`} OR
       books.author::text ILIKE ${`%${query}%`}
   `;
 

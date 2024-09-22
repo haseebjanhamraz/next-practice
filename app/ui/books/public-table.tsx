@@ -5,7 +5,7 @@ import { getTextStyles } from '@/app/lib/utils';
 
 type Book = {
     id: string;
-    bookId: string;
+    bookid: string;
     shelf: string;
     title: string;
     author: string;
@@ -45,7 +45,10 @@ function MobileBooksList({ books }: { books: Book[] }) {
                     <div className="flex items-center justify-between border-b pb-4">
                         <div>
                             <BookCoverWithTitle book={book} />
-                            <p className="text-sm text-gray-500">{book.language}</p>
+                            <p className="text-sm text-gray-500 font-bold">{book.author}</p>
+                            <p className="text-sm text-gray-500">{book.language}
+                                {" - "} <span className='italic'>{book.publication_year}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -59,6 +62,7 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
         <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
                 <tr>
+                    <TableHeader title="Book ID" />
                     <TableHeader title="Book Name" />
                     <TableHeader title="Author" />
                     <TableHeader title="Published" />
@@ -75,12 +79,15 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
                         className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                     >
                         <TableCell>
-
-                            <p className={getTextStyles(book.language)}>{book.title}</p>
+                            <p>{book.bookid}</p>
                         </TableCell>
                         <TableCell>
                             <p className={getTextStyles(book.language)}>
-
+                                {book.title}
+                            </p>
+                        </TableCell>
+                        <TableCell>
+                            <p className={getTextStyles(book.language)}>
                                 {book.author}
                             </p>
                         </TableCell>
@@ -98,13 +105,6 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
 function BookCoverWithTitle({ book }: { book: Book }) {
     return (
         <div className="mb-2 flex items-center">
-            <Image
-                src={book.image_url}
-                className="mr-2 rounded-full"
-                width={28}
-                height={28}
-                alt={`${book.title}'s profile picture`}
-            />
             <p>{book.title}</p>
         </div>
     );
