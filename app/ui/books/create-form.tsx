@@ -9,8 +9,7 @@ import { Button } from '@/app/ui/button';
 
 export default function Form() {
   const initialState: State = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createBook, initialState);
-
+  const [state, formAction] = useActionState(createBook, initialState)
   return (
     <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">

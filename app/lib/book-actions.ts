@@ -28,7 +28,7 @@ const FormSchema = z.object({
         invalid_type_error: "Please enter a library book genre",
     }),
     price: z.coerce.number()
-        .gt(0, { message: 'Please enter an amount greater than $0.' }),
+        .gt(0, { message: 'Please enter an amount greater than 0.' }),
     language: z.string({
         invalid_type_error: "Please enter a library book language",
     }),
@@ -118,7 +118,6 @@ export async function createBook(prevState: State, formData: FormData) {
         image_url,
         in_stock,
         total_copies } = validatedFields.data;
-    const amountInCents = price * 100;
     const date = new Date().toISOString().split('T')[0];
 
     // Insert data into the database

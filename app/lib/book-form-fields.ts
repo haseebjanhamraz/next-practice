@@ -1,6 +1,6 @@
 // lib/book-form-fields.ts
 export const bookFormFields = [
-    { id: "bookId", label: "Book ID", type: "text", placeholder: "Enter Book ID" },
+    { id: "bookid", label: "Book ID", type: "text", placeholder: "Enter Book ID" },
     { id: "shelf", label: "Shelf", type: "text", placeholder: "Enter Shelf Location" },
     { id: "title", label: "Title", type: "text", placeholder: "Enter Book Title" },
     { id: "author", label: "Author", type: "text", placeholder: "Enter Author Name" },

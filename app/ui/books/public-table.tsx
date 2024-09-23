@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import { formatCurrency } from '@/app/lib/utils';
 import { fetchBooks } from '@/app/lib/data';
 import { getTextStyles } from '@/app/lib/utils';
 
 type Book = {
     id: string;
-    bookId: string;
+    bookid: string;
     shelf: string;
     title: string;
     author: string;
@@ -80,14 +79,13 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
                         </TableCell>
                         <TableCell>
                             <p className={getTextStyles(book.language)}>
-
                                 {book.author}
                             </p>
                         </TableCell>
                         <TableCell>{book.publication_year}</TableCell>
                         <TableCell>{book.genre}</TableCell>
                         <TableCell>{book.language}</TableCell>
-                        <TableCell>{formatCurrency(book.price)}</TableCell>
+                        <TableCell>{book.price}</TableCell>
                     </tr>
                 ))}
             </tbody>

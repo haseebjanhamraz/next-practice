@@ -71,8 +71,8 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 
 export function getTextStyles(language: string) {
   return clsx({
-    'text-right': language === "Urdu",
-    'font-[amiri]': language === "Urdu",
-    'font-bold': language === "Urdu",
+    'text-right': language === "Pashto" || language === "Urdu",
+    'font-[amiri]': language === "Urdu" || language === "Pashto",
+    'font-bold': language === "Urdu" || language === "Pashto",
   });
 }
