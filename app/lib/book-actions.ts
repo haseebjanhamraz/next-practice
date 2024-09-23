@@ -71,13 +71,13 @@ export type State = {
         shelf?: string[];
         title?: string[];
         author?: string[];
-        publication_year?: Number[];
+        publication_year?: number[];
         genre?: string[];
-        price?: Number[];
+        price?: number[];
         language?: string[];
         image_url?: string[];
         in_stock?: boolean[];
-        total_copies?: Number[];
+        total_copies?: number[];
     };
     message?: string | null;
 };
