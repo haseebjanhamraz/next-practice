@@ -36,20 +36,18 @@ export default function Navbar() {
         <nav className="bg-gray-100 p-4 sticky top-0">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo and Title */}
-                <Link href={"/"}>
-                    <div className="flex items-center space-x-4">
-                        <Image
-                            src="/logo.png"
-                            alt="Logo"
-                            width={50}
-                            height={50}
-                            className="rounded-full p-1"
-                        />
-                        <h4 className="text-xl font-bold text-black">
-                            Bacha Khan Research Center - BKRC
-                        </h4>
-                    </div>
-                </Link>
+                <div className="flex items-center space-x-4">
+                    <Image
+                        src="/logo.png"
+                        alt="Logo"
+                        width={50}
+                        height={50}
+                        className="rounded-full p-1"
+                    />
+                    <h4 className="text-xl font-bold text-black">
+                        Bacha Khan Research Center - BKRC
+                    </h4>
+                </div>
 
                 {/* Desktop Menu */}
                 <ul className="hidden md:flex gap-6">

@@ -2,7 +2,7 @@ import { Revenue } from './definitions';
 import clsx from 'clsx';
 
 export const formatCurrency = (amount: number) => {
-  return (amount).toLocaleString('en-US', {
+  return (amount / 100).toLocaleString('en-US', {
     style: 'currency',
     currency: 'PKR',
   });
