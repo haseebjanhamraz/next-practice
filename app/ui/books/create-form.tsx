@@ -9,7 +9,7 @@ import { Button } from '@/app/ui/button';
 
 export default function Form() {
   const initialState: State = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createBook, initialState)
+  const [State, formAction] = useActionState(createBook, initialState);
   return (
     <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -39,8 +39,8 @@ export default function Form() {
               )}
             </div>
             <div id={`${field.id}-error`} aria-live="polite" aria-atomic="true">
-              {state.errors?.[field.id] &&
-                state.errors[field.id].map((error: string) => (
+              {State.errors?.[field.id] &&
+                State.errors[field.id].map((error: string) => (
                   <p className="mt-2 text-sm text-red-500" key={error}>
                     {error}
                   </p>

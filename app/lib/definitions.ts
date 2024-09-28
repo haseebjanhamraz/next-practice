@@ -123,3 +123,8 @@ export type BookForm = {
   in_stock: boolean;
   total_copies: number;
 };
+
+export type LanguageList = {
+  id: string;
+  language: string;
+}

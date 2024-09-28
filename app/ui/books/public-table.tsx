@@ -44,7 +44,10 @@ function MobileBooksList({ books }: { books: Book[] }) {
                     <div className="flex items-center justify-between border-b pb-4">
                         <div>
                             <BookCoverWithTitle book={book} />
-                            <p className="text-sm text-gray-500">{book.language}</p>
+                            <p className="text-sm text-gray-500 font-bold">{book.author}</p>
+                            <p className="text-sm text-gray-500">{book.language}
+                                {" - "}<span className='font-md'>{book.publication_year}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +66,6 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
                     <TableHeader title="Published" />
                     <TableHeader title="Genre" />
                     <TableHeader title="Language" />
-                    <TableHeader title="Price" />
 
                 </tr>
             </thead>
@@ -85,7 +87,6 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
                         <TableCell>{book.publication_year}</TableCell>
                         <TableCell>{book.genre}</TableCell>
                         <TableCell>{book.language}</TableCell>
-                        <TableCell>{book.price}</TableCell>
                     </tr>
                 ))}
             </tbody>
@@ -96,14 +97,7 @@ function DesktopBooksTable({ books }: { books: Book[] }) {
 function BookCoverWithTitle({ book }: { book: Book }) {
     return (
         <div className="mb-2 flex items-center">
-            <Image
-                src={book.image_url}
-                className="mr-2 rounded-full"
-                width={28}
-                height={28}
-                alt={`${book.title}'s profile picture`}
-            />
-            <p>{book.title}</p>
+            <p className={`${getTextStyles(book.language)} text-xl font-bold`}>{book.title}</p>
         </div>
     );
 }

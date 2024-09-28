@@ -9,6 +9,7 @@ import {
   BooksTable,
   BookForm,
   LatestBooks,
+  LanguageList,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -332,5 +333,25 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+
+export async function fetchLang() {
+  try {
+    const data = await sql<LanguageList>`
+      SELECT
+        id,
+        language
+      FROM books
+      ORDER BY language ASC
+    `;
+
+    const language = data.rows;
+    return language;
+    console.log(language)
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch languages.');
   }
 }

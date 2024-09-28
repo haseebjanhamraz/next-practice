@@ -16,7 +16,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         {!isDashboardRoute && <Navbar />}
-        <main className={pathname === "/" ? "p-10" : "p-0"}>{children}</main>
+
+
+        <main className={`${pathname === "/" ? "p-10" : "p-0"}`}>{children}</main>
+
         {!isDashboardRoute && <Footer />}
       </body>
     </html>
