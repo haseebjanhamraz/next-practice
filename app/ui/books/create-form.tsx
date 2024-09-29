@@ -6,7 +6,6 @@ import { useActionState } from 'react';
 import Link from 'next/link';
 import { bookFormFields } from '@/app/lib/book-form-fields';
 import { Button } from '@/app/ui/button';
-
 export default function Form() {
   const initialState: State = { message: null, errors: {} };
   const [State, formAction] = useActionState(createBook, initialState);

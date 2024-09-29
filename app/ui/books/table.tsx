@@ -2,6 +2,7 @@ import { formatCurrency } from '@/app/lib/utils';
 import { fetchBooks } from '@/app/lib/data';
 import { getTextStyles } from '@/app/lib/utils';
 import { UpdateBook, DeleteBook } from '@/app/ui/books/buttons';
+
 import clsx from 'clsx';
 type Book = {
     id: string;
@@ -56,58 +57,60 @@ function MobileBooksList({ books }: { books: Book[] }) {
 
 function DesktopBooksTable({ books }: { books: Book[] }) {
     return (
-        <table className="hidden min-w-full text-gray-900 md:table">
-            <thead className="rounded-lg text-left text-sm font-normal">
-                <tr>
-                    <TableHeader title="Book ID" />
-                    <TableHeader title="Book Name" />
-                    <TableHeader title="Author" />
-                    <TableHeader title="Published" />
-                    <TableHeader title="Total Copies" />
-                    <TableHeader title="Genre" />
-                    <TableHeader title="Language" />
-                    <TableHeader title="Price" />
-                </tr>
-            </thead>
-            <tbody className="bg-white">
-                {books?.map((book) => (
-                    <tr
-                        key={book.id}
-                        className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                    >
-                        <TableCell>
-                            <p>
-                                {book.bookid}
-                            </p>
-                        </TableCell>
-                        <TableCell>
-                            <p className={getTextStyles(book.language)}>
-                                {book.title}
-                            </p>
-                        </TableCell>
-                        <TableCell>
-                            <p className={getTextStyles(book.language)}>
-                                {book.author}
-                            </p>
-                        </TableCell>
-                        <TableCell>{book.publication_year}</TableCell>
-                        <TableCell>{book.total_copies}</TableCell>
-                        <TableCell>{book.genre}</TableCell>
-                        <TableCell>{book.language}</TableCell>
-                        <TableCell>{formatCurrency(book.price)}</TableCell>
-
-                        {/* Action buttons inside a TableCell */}
-                        <TableCell>
-                            <div className="flex justify-end gap-2">
-                                <UpdateBook id={book.id} />
-                                <DeleteBook id={book.id} />
-                            </div>
-                        </TableCell>
+        <>
+            <table className="hidden min-w-full text-gray-900 md:table">
+                <thead className="rounded-lg text-left text-sm font-normal">
+                    <tr>
+                        <TableHeader title="Book ID" />
+                        <TableHeader title="Book Name" />
+                        <TableHeader title="Author" />
+                        <TableHeader title="Published" />
+                        <TableHeader title="Total Copies" />
+                        <TableHeader title="Genre" />
+                        <TableHeader title="Language" />
+                        <TableHeader title="Price" />
                     </tr>
-                ))}
-            </tbody>
+                </thead>
+                <tbody className="bg-white">
+                    {books?.map((book) => (
+                        <tr
+                            key={book.id}
+                            className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                        >
+                            <TableCell>
+                                <p>
+                                    {book.bookid}
+                                </p>
+                            </TableCell>
+                            <TableCell>
+                                <p className={getTextStyles(book.language)}>
+                                    {book.title}
+                                </p>
+                            </TableCell>
+                            <TableCell>
+                                <p className={getTextStyles(book.language)}>
+                                    {book.author}
+                                </p>
+                            </TableCell>
+                            <TableCell>{book.publication_year}</TableCell>
+                            <TableCell>{book.total_copies}</TableCell>
+                            <TableCell>{book.genre}</TableCell>
+                            <TableCell>{book.language}</TableCell>
+                            <TableCell>{formatCurrency(book.price)}</TableCell>
 
-        </table>
+                            {/* Action buttons inside a TableCell */}
+                            <TableCell>
+                                <div className="flex justify-end gap-2">
+                                    <UpdateBook id={book.id} />
+                                    <DeleteBook id={book.id} />
+                                </div>
+                            </TableCell>
+                        </tr>
+                    ))}
+                </tbody>
+
+            </table>
+        </>
     );
 }
 
