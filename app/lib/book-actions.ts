@@ -21,7 +21,7 @@ const FormSchema = z.object({
     author: z.string({
         invalid_type_error: "Please enter a library book author",
     }),
-    publication_year: z.string({
+    publication_year: z.number({
         invalid_type_error: "Please enter a library book publication year",
     }),
     genre: z.string({
@@ -33,7 +33,7 @@ const FormSchema = z.object({
         invalid_type_error: "Please enter a library book language",
     }),
     image_url: z.string({
-        invalid_type_error: "Please enter a library book language",
+        invalid_type_error: "Please enter a library book image URL",
     }),
     in_stock: z.boolean(),
     total_copies: z.number(),
@@ -42,7 +42,7 @@ const FormSchema = z.object({
 
 
 export async function authenticate(
-    prevState: string | undefined,
+    prevState: { message: string },
     formData: FormData,
 ) {
     try {
@@ -71,13 +71,13 @@ export type State = {
         shelf?: string[];
         title?: string[];
         author?: string[];
-        publication_year?: number[];
+        publication_year?: string[];
         genre?: string[];
-        price?: number[];
+        price?: string[];
         language?: string[];
         image_url?: string[];
-        in_stock?: boolean[];
-        total_copies?: number[];
+        in_stock?: string[];
+        total_copies?: string[];
     };
     message?: string | null;
 };
@@ -89,7 +89,7 @@ export async function createBook(prevState: State, formData: FormData) {
         shelf: formData.get('shelf'),
         title: formData.get('title'),
         author: formData.get('author'),
-        publication_year: formData.get('publication_year'),
+        publication_year: Number(formData.get('publication_year')),
         genre: formData.get('genre'),
         price: Number(formData.get('price')),
         language: formData.get('language'),

@@ -23,7 +23,6 @@ export default function Languages() {
                         <XCircleIcon className="h-5 w-5 ml-auto cursor-pointer hover:text-white hover:bg-red-500 rounded-full" />
                     </div>
                 </div>
-                <Button children={"Add New"} className='w-fit' />
             </div>
         </>
     )
